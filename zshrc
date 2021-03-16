@@ -55,13 +55,13 @@ alias trm="trash-put"
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
 export USER=rnakai
 export MAIL=$USER@student.42tokyo.jp
-export PATH="$HOME/.rbenv/bin:$PATH"
+# export PATH="$HOME/.rbenv/bin:$PATH"
 export NODE_PATH="/usr/local/lib/node_modules"
 
 ## trash-put command path
 export PATH=~/.local/bin:"$PATH"
 
-eval "$(rbenv init -)"
+# $eval "$(rbenv init -)"
 
 # git のカラー表示
 git config --global color.ui auto 
