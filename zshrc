@@ -52,14 +52,15 @@ alias rmx='\rm'
 alias rm='echo "You should use trash-put (trm) command instead of rm."; false'
 alias trm="trash-put"
 
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
+#export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
 export USER=rnakai
 export MAIL=$USER@student.42tokyo.jp
 # export PATH="$HOME/.rbenv/bin:$PATH"
-export NODE_PATH="/usr/local/lib/node_modules"
+#export NODE_PATH="/usr/local/lib/node_modules"
 
 ## trash-put command path
-export PATH=~/.local/bin:"$PATH"
+#export PATH=~/.local/bin:"$PATH"
+export LANG=en_US.UTF-8
 
 # $eval "$(rbenv init -)"
 
