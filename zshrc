@@ -125,3 +125,8 @@ bindkey "^?" backward-delete-char
 ## able to use CTRL + R command in insert mode
 ##(https://unix.stackexchange.com/questions/44115/how-do-i-perform-a-reverse-history-search-in-zshs-vi-mode)
 bindkey "^R" history-incremental-search-backward
+
+## kubectl shell completion
+source <(kubectl completion zsh)
+
+alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
