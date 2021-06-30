@@ -12,6 +12,9 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
+# for asdf completion
+fpath=(${ASDF_DIR}/completions $fpath)
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
@@ -34,9 +37,6 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-
-alias norm="~/.norminette/norminette.rb"
-alias norminette="~/.norminette/norminette.rb"
 alias gccx="gcc -Wall -Wextra -Werror"
 alias browse="explorer.exe"
 
@@ -52,11 +52,23 @@ alias rmx='\rm'
 alias rm='echo "You should use trash-put (trm) command instead of rm."; false'
 alias trm="trash-put"
 
+alias open="xdg-open"
+alias 'gittree'='git log --graph --all --format="%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s"'
+
+alias here="gnome-terminal"
+alias pbcopy='xsel --clipboard --input'
+
+
+if [[ -x `which colordiff` ]]; then
+  alias diff='colordiff'
+fi
+
 #export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
 export USER=rnakai
 export MAIL=$USER@student.42tokyo.jp
 # export PATH="$HOME/.rbenv/bin:$PATH"
 #export NODE_PATH="/usr/local/lib/node_modules"
+export PATH="${HOME}/.local/lib/go/bin:${PATH}"
 
 ## trash-put command path
 #export PATH=~/.local/bin:"$PATH"
@@ -126,7 +138,12 @@ bindkey "^?" backward-delete-char
 ##(https://unix.stackexchange.com/questions/44115/how-do-i-perform-a-reverse-history-search-in-zshs-vi-mode)
 bindkey "^R" history-incremental-search-backward
 
+# enable asdf
+source $HOME/.asdf/asdf.sh
+
 ## kubectl shell completion
 source <(kubectl completion zsh)
 
 alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
+
+
