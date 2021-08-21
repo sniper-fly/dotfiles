@@ -12,12 +12,14 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
-# for asdf completion
-fpath=(${ASDF_DIR}/completions $fpath)
-
 # Use modern completion system
 autoload -Uz compinit
 compinit
+
+# for asdf completion
+fpath=(${ASDF_DIR}/completions $fpath)
+# enable asdf
+source $HOME/.asdf/asdf.sh
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -91,9 +93,9 @@ setopt hist_ignore_all_dups
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-
 alias vzsh='vim ~/.zshrc'
 alias szsh='source ~/.zshrc'
+alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
 
 bindkey -v
 
@@ -101,6 +103,7 @@ bindkey -v
 autoload -Uz add-zsh-hook
 autoload -Uz terminfo
 
+# これをいれることで何故か余計な改行を入れなくなる。原因不明
 terminfo_down_sc=$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]
 left_down_prompt_preexec() {
     print -rn -- $terminfo[el]
@@ -120,30 +123,34 @@ function zle-keymap-select zle-line-init zle-line-finish
             PROMPT_2="$fg[yellow]-- VISUAL --$reset_color"
             ;;
     esac
+  
+    vim_prompt="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}"
+    pwd_p="[%F{cyan}%~%f]"
 
-    PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%(?.%{${fg[green]}%}.%{${fg[red]}%})%n%{${reset_color}%}]%# "
+    PROMPT="${vim_prompt}${pwd_p}%# "
     zle reset-prompt
 }
+
+#機能しない
+branch_name="%F{blue}[$(git rev-parse --abbrev-ref HEAD 2> /dev/null)]%f"
+
+# 終了ステータスでの条件分岐評価もあり. ?.  . で判定しているようだがソースなし
+user_prompt="[%(?.%{${fg[green]}%}.%{${fg[red]}%})%n%{${reset_color}%}]"
+RPROMPT="${branch_name}${user_prompt}"
 
 zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
 zle -N edit-command-line
-###################
 
 ## solve the bug about switching insert and normal mode. (https://github.com/denysdovhan/spaceship-prompt/issues/91)
 bindkey "^?" backward-delete-char
+
+###################
 
 ## able to use CTRL + R command in insert mode
 ##(https://unix.stackexchange.com/questions/44115/how-do-i-perform-a-reverse-history-search-in-zshs-vi-mode)
 bindkey "^R" history-incremental-search-backward
 
-# enable asdf
-source $HOME/.asdf/asdf.sh
-
 ## kubectl shell completion
 source <(kubectl completion zsh)
-
-alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
-
-
