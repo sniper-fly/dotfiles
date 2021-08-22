@@ -138,13 +138,8 @@ function zle-keymap-select zle-line-init zle-line-finish
     zle reset-prompt
 }
 
-#機能しない
-branch_name="%F{blue}[$(git rev-parse --abbrev-ref HEAD 2> /dev/null)]%f"
-
 # 終了ステータスでの条件分岐評価もあり. ?.  . で判定しているようだがソースなし
 user_prompt="[%(?.%{${fg[green]}%}.%{${fg[red]}%})%n%{${reset_color}%}]"
-
-setopt prompt_subst
 
 zle -N zle-line-init
 zle -N zle-line-finish
