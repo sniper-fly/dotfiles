@@ -129,11 +129,11 @@ function zle-keymap-select zle-line-init zle-line-finish
     esac
 
     vim_prompt="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}"
-    pwd_p="[%F{cyan}%~%f]"
-    PROMPT="${vim_prompt}${pwd_p}%# "
+    PROMPT="${vim_prompt}%# "
 
+    pwd_p="[%F{cyan}%~%f]"
     branch_info="%F{blue}[${vcs_info_msg_0_}]%f"
-    RPROMPT="${branch_info}${user_prompt}"
+    RPROMPT="${pwd_p}${branch_info}${user_prompt}"
 
     zle reset-prompt
 }
