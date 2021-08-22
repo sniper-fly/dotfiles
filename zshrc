@@ -110,6 +110,10 @@ left_down_prompt_preexec() {
 }
 add-zsh-hook preexec left_down_prompt_preexec
 
+autoload -Uz vcs_info
+add-zsh-hook precmd vcs_info
+zstyle ':vcs_info:git:*' formats '%b'
+
 function zle-keymap-select zle-line-init zle-line-finish
 {
     case $KEYMAP in
@@ -123,11 +127,14 @@ function zle-keymap-select zle-line-init zle-line-finish
             PROMPT_2="$fg[yellow]-- VISUAL --$reset_color"
             ;;
     esac
-  
+
     vim_prompt="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}"
     pwd_p="[%F{cyan}%~%f]"
-
     PROMPT="${vim_prompt}${pwd_p}%# "
+
+    branch_info="%F{blue}[${vcs_info_msg_0_}]%f"
+    RPROMPT="${branch_info}${user_prompt}"
+
     zle reset-prompt
 }
 
@@ -136,7 +143,8 @@ branch_name="%F{blue}[$(git rev-parse --abbrev-ref HEAD 2> /dev/null)]%f"
 
 # 終了ステータスでの条件分岐評価もあり. ?.  . で判定しているようだがソースなし
 user_prompt="[%(?.%{${fg[green]}%}.%{${fg[red]}%})%n%{${reset_color}%}]"
-RPROMPT="${branch_name}${user_prompt}"
+
+setopt prompt_subst
 
 zle -N zle-line-init
 zle -N zle-line-finish
