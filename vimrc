@@ -12,3 +12,5 @@ endif
 
 set nu
 syntax on
+
+nnoremap Y y$
