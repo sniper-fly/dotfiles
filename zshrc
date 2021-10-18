@@ -140,8 +140,10 @@ function zle-keymap-select zle-line-init zle-line-finish
     esac
 
     vim_prompt="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}"
-    PROMPT="${vim_prompt}%# "
+    PROMPT="${vim_prompt}%F{green}%#%f> "
 
+    # 終了ステータスでの条件分岐評価もあり. ?.  . で判定しているようだがソースなし
+    user_prompt="[%(?.%{${fg[green]}%}.%{${fg[red]}%})%n%{${reset_color}%}]"
     pwd_p="[%F{cyan}%~%f]"
     branch_info="%F{blue}[${vcs_info_msg_0_}]%f"
     RPROMPT="${pwd_p}${branch_info}${user_prompt}"
@@ -149,8 +151,6 @@ function zle-keymap-select zle-line-init zle-line-finish
     zle reset-prompt
 }
 
-# 終了ステータスでの条件分岐評価もあり. ?.  . で判定しているようだがソースなし
-user_prompt="[%(?.%{${fg[green]}%}.%{${fg[red]}%})%n%{${reset_color}%}]"
 
 zle -N zle-line-init
 zle -N zle-line-finish
