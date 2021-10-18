@@ -54,11 +54,15 @@ alias rmx='\rm'
 alias rm='echo "You should use trash-put (trm) command instead of rm."; false'
 alias trm="trash-put"
 
-alias open="xdg-open"
-alias 'gittree'='git log --graph --all --format="%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s"'
+alias open="xdg-open" alias 'gittree'='git log --graph --all --format="%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s"'
 
 alias here="gnome-terminal"
 alias pbcopy='xsel --clipboard --input'
+
+alias mv='mv -i'
+alias cp='cp -i'
+
+alias sudo='sudo '
 
 
 if [[ -x `which colordiff` ]]; then
@@ -96,6 +100,13 @@ alias grep='grep --color=auto'
 alias vzsh='vim ~/.zshrc'
 alias szsh='source ~/.zshrc'
 alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
+alias start_work="code ~/42/cpp/github; code ~/42/cpp/teacher ; code ~/work/TIL ; cd ~/42/cpp/github/cpp06"
+alias win_switch="${HOME}/work/win_switch/win_switch.sh"
+alias plantuml-server="docker run -d -p 8080:8080 plantuml/plantuml-server:jetty"
+
+function norminette() {
+    docker run --rm -v $PWD:/code tkomatsu/norminette /code/$1
+}
 
 bindkey -v
 
