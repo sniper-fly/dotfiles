@@ -122,7 +122,6 @@ left_down_prompt_preexec() {
 add-zsh-hook preexec left_down_prompt_preexec
 
 autoload -Uz vcs_info
-add-zsh-hook precmd vcs_info
 zstyle ':vcs_info:git:*' formats '%b'
 
 function zle-keymap-select zle-line-init zle-line-finish
@@ -151,6 +150,8 @@ function zle-keymap-select zle-line-init zle-line-finish
     zle reset-prompt
 }
 
+# 終了ステータスでの条件分岐評価もあり. ?.  . で判定しているようだがソースなし
+user_prompt="[%(?.%{${fg[green]}%}.%{${fg[red]}%})%n%{${reset_color}%}]"
 
 zle -N zle-line-init
 zle -N zle-line-finish
