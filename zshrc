@@ -65,6 +65,19 @@ alias sudo='sudo '
 alias tsnode='npx ts-node'
 alias sl=ls
 
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias vzsh='vim ~/.zshrc'
+alias szsh='source ~/.zshrc'
+alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
+
+alias win_switch="${HOME}/work/win_switch/win_switch.sh"
+alias plantuml-server="docker run -d -p 8080:8080 plantuml/plantuml-server:jetty"
+alias clangx="clang++ -Wall -Wextra -Werror"
+alias til="code ~/work/TIL"
+alias valgrind="colour-valgrind"
+alias bat="batcat"
+
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff'
 fi
@@ -72,13 +85,10 @@ fi
 #export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
 export USER=rnakai
 export MAIL=$USER@student.42tokyo.jp
-# export PATH="$HOME/.rbenv/bin:$PATH"
-#export NODE_PATH="/usr/local/lib/node_modules"
 export PATH="${HOME}/.local/lib/go/bin:${PATH}"
 export PATH="${HOME}/go/bin:${PATH}"
+export PATH=/home/rnakai/.tiup/bin:$PATH
 
-## trash-put command path
-#export PATH=~/.local/bin:"$PATH"
 export LANG=en_US.UTF-8
 
 eval "$(~/.rbenv/bin/rbenv init - zsh)"
@@ -95,24 +105,6 @@ setopt share_history
 
 # 同じコマンドをヒストリに残さない
 setopt hist_ignore_all_dups
-
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias vzsh='vim ~/.zshrc'
-alias szsh='source ~/.zshrc'
-alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
-#alias startwork="code ~/42/container/github; \
-#	code ~/42/container/teacher ; \
-#	code ~/work/TIL ; \
-#	cd ~/42/container/github ; "
-#alias startwork="code ~/42/webserv/"
-
-alias win_switch="${HOME}/work/win_switch/win_switch.sh"
-alias plantuml-server="docker run -d -p 8080:8080 plantuml/plantuml-server:jetty"
-alias clangx="clang++ -Wall -Wextra -Werror"
-alias til="code ~/work/TIL"
-alias valgrind="colour-valgrind"
-alias bat="batcat"
 
 function norminette() {
     docker run --rm -v $PWD:/code tkomatsu/norminette /code/$1
@@ -199,5 +191,3 @@ disable r
 
 ## enable github cli completion
 eval "$(gh completion -s zsh)"
-
-export PATH=/home/rnakai/.tiup/bin:$PATH
