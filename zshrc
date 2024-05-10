@@ -75,12 +75,13 @@ export MAIL=$USER@student.42tokyo.jp
 # export PATH="$HOME/.rbenv/bin:$PATH"
 #export NODE_PATH="/usr/local/lib/node_modules"
 export PATH="${HOME}/.local/lib/go/bin:${PATH}"
+export PATH="${HOME}/go/bin:${PATH}"
 
 ## trash-put command path
 #export PATH=~/.local/bin:"$PATH"
 export LANG=en_US.UTF-8
 
-# $eval "$(rbenv init -)"
+eval "$(~/.rbenv/bin/rbenv init - zsh)"
 
 # git のカラー表示
 git config --global color.ui auto 
@@ -191,4 +192,12 @@ bindkey "^?" backward-delete-char
 bindkey "^R" history-incremental-search-backward
 
 ## kubectl shell completion
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
+
+## disable builtin r command
+disable r
+
+## enable github cli completion
+eval "$(gh completion -s zsh)"
+
+export PATH=/home/rnakai/.tiup/bin:$PATH
