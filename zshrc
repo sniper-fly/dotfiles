@@ -117,6 +117,20 @@ function norminette() {
     docker run --rm -v $PWD:/code tkomatsu/norminette /code/$1
 }
 
+function display_bright() {
+    if [ "$1" = "night" ]; then
+        ddcutil setvcp --display 1 10 29
+        ddcutil setvcp --display 2 10 0
+        xrandr --output DisplayPort-0 --brightness 0.6
+    elif [ "$1" = "day" ]; then
+        ddcutil setvcp --display 1 10 0
+        ddcutil setvcp --display 2 10 20
+        xrandr --output DisplayPort-0 --brightness 1
+    else
+        echo "You can pass arguments like '$ display_bright night', '$ display_bright day'."
+    fi    
+}
+
 bindkey -v
 
 ######  show difference btwn normal and insert mode (https://qiita.com/b4b4r07/items/8db0257d2e6f6b19ecb9)
