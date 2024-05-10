@@ -1,9 +1,3 @@
-# Set up the prompt
-
-#autoload -Uz promptinit
-#promptinit
-#prompt adam1
-
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
@@ -105,10 +99,6 @@ setopt share_history
 
 # 同じコマンドをヒストリに残さない
 setopt hist_ignore_all_dups
-
-function norminette() {
-    docker run --rm -v $PWD:/code tkomatsu/norminette /code/$1
-}
 
 function display_bright() {
     if [ "$1" = "night" ]; then
