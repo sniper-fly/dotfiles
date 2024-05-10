@@ -12,14 +12,14 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
-# Use modern completion system
-autoload -Uz compinit
-compinit
-
 # for asdf completion
 fpath=(${ASDF_DIR}/completions $fpath)
 # enable asdf
 source $HOME/.asdf/asdf.sh
+
+# Use modern completion system
+autoload -Uz compinit
+compinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
