@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+#export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
+export USER=rnakai
+export MAIL=$USER@student.42tokyo.jp
+export PATH="${HOME}/.local/lib/go/bin:${PATH}"
+export PATH="${HOME}/go/bin:${PATH}"
+export PATH=/home/rnakai/.tiup/bin:$PATH
+
+export LANG=en_US.UTF-8
