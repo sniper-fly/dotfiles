@@ -1,10 +1,12 @@
 # load modules
-source ./modules/aliases
-source ./modules/exports
-source ./modules/functions
+MODULES_PATH="${HOME}/Desktop/dotfiles/modules"
+
+source ${MODULES_PATH}/aliases
+source ${MODULES_PATH}/exports
+source ${MODULES_PATH}/functions
 
 # zsh本体の設定値など
-source ./modules/zshrc
+source ${MODULES_PATH}/zshrc
 
 ## enable github cli completion
 eval "$(gh completion -s zsh)"
