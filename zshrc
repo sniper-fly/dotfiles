@@ -45,7 +45,6 @@ alias browse="explorer.exe"
 alias ga="git add "
 alias gaA="git add -A"
 alias gcm="git commit -m "
-alias gpg="git push github"
 
 alias python="python3"
 alias pip="pip3"
@@ -57,13 +56,14 @@ alias trm="trash-put"
 alias open="xdg-open" alias 'gittree'='git log --graph --all --format="%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s"'
 
 alias here="gnome-terminal"
-alias pbcopy='xsel --clipboard --input'
+alias clipcopy='xsel --clipboard --input'
 
 alias mv='mv -i'
 alias cp='cp -i'
 
 alias sudo='sudo '
-
+alias tsnode='npx ts-node'
+alias sl=ls
 
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff'
@@ -100,9 +100,18 @@ alias grep='grep --color=auto'
 alias vzsh='vim ~/.zshrc'
 alias szsh='source ~/.zshrc'
 alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
-alias start_work="code ~/42/cpp/github; code ~/42/cpp/teacher ; code ~/work/TIL ; cd ~/42/cpp/github/cpp06"
+#alias startwork="code ~/42/container/github; \
+#	code ~/42/container/teacher ; \
+#	code ~/work/TIL ; \
+#	cd ~/42/container/github ; "
+#alias startwork="code ~/42/webserv/"
+
 alias win_switch="${HOME}/work/win_switch/win_switch.sh"
 alias plantuml-server="docker run -d -p 8080:8080 plantuml/plantuml-server:jetty"
+alias clangx="clang++ -Wall -Wextra -Werror"
+alias til="code ~/work/TIL"
+alias valgrind="colour-valgrind"
+alias bat="batcat"
 
 function norminette() {
     docker run --rm -v $PWD:/code tkomatsu/norminette /code/$1
