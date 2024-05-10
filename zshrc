@@ -38,8 +38,6 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-eval "$(~/.rbenv/bin/rbenv init - zsh)"
-
 # git のカラー表示
 git config --global color.ui auto 
 
@@ -106,14 +104,9 @@ zle -N edit-command-line
 ## solve the bug about switching insert and normal mode. (https://github.com/denysdovhan/spaceship-prompt/issues/91)
 bindkey "^?" backward-delete-char
 
-###################
-
 ## able to use CTRL + R command in insert mode
 ##(https://unix.stackexchange.com/questions/44115/how-do-i-perform-a-reverse-history-search-in-zshs-vi-mode)
 bindkey "^R" history-incremental-search-backward
-
-## kubectl shell completion
-# source <(kubectl completion zsh)
 
 ## disable builtin r command
 disable r
