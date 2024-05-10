@@ -47,7 +47,8 @@ alias rmx='\rm'
 alias rm='echo "You should use trash-put (trm) command instead of rm."; false'
 alias trm="trash-put"
 
-alias open="xdg-open" alias 'gittree'='git log --graph --all --format="%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s"'
+alias open="xdg-open"
+alias gittree='git log --graph --all --format="%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s"'
 
 alias here="gnome-terminal"
 alias clipcopy='xsel --clipboard --input'
