@@ -6,5 +6,6 @@ export MAIL=$USER@student.42tokyo.jp
 export PATH="${HOME}/.local/lib/go/bin:${PATH}"
 export PATH="${HOME}/go/bin:${PATH}"
 export PATH=/home/rnakai/.tiup/bin:$PATH
+export PATH="$PATH:/home/rnakai/.local/bin"
 
 export LANG=en_US.UTF-8
