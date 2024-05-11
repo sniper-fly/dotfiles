@@ -14,7 +14,9 @@ eval "$(gh completion -s zsh)"
 # git のカラー表示
 git config --global color.ui auto 
 
-# for asdf completion
-fpath=(${ASDF_DIR}/completions $fpath)
 # enable asdf
 source $HOME/.asdf/asdf.sh
+
+# for asdf completion
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit && compinit
