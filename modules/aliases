@@ -7,7 +7,7 @@ alias ga="git add "
 alias gaA="git add -A"
 alias gcm="git commit -m "
 
-alias python="python3"
+alias python="python3.9"
 alias pip="pip3"
 
 alias rmx='\rm'
@@ -43,3 +43,5 @@ alias bat="batcat"
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff'
 fi
+
+alias sail="./vendor/bin/sail"
