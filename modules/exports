@@ -9,3 +9,6 @@ export PATH=/home/rnakai/.tiup/bin:$PATH
 export PATH="$PATH:/home/rnakai/.local/bin"
 
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"

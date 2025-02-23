@@ -7,7 +7,7 @@ alias ga="git add "
 alias gaA="git add -A"
 alias gcm="git commit -m "
 
-alias python="python3.9"
+alias python="python3"
 alias pip="pip3"
 
 alias rmx='\rm'
