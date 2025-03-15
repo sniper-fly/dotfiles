@@ -12,7 +12,7 @@ source ${MODULES_PATH}/zshrc
 eval "$(gh completion -s zsh)"
 
 # git のカラー表示
-git config --global color.ui auto 
+git config --global color.ui auto
 
 # for asdf completion
 # append completions to fpath
