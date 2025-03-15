@@ -40,8 +40,11 @@ alias til="code ~/work/TIL"
 alias valgrind="colour-valgrind"
 alias bat="batcat"
 
-if [[ -x `which colordiff` ]]; then
+if [[ -x $(which colordiff) ]]; then
   alias diff='colordiff'
 fi
 
 alias sail="./vendor/bin/sail"
+
+alias npm="echo 'Please refrain from using npm. Use dpx instead.'; false"
+alias npx="echo 'Please refrain from using npx. Use dpx instead.'; false"
