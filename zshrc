@@ -10,6 +10,10 @@ source ${MODULES_PATH}/zshrc
 
 ## enable github cli completion
 eval "$(gh completion -s zsh)"
+eval "$(phantom completion zsh)"
+
+## enable direnv
+eval "$(direnv hook zsh)"
 
 # git のカラー表示
 git config --global color.ui auto
@@ -19,3 +23,13 @@ git config --global color.ui auto
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# pnpm
+export PNPM_HOME="/home/rnakai/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

@@ -7,6 +7,7 @@ export PATH="${HOME}/.local/lib/go/bin:${PATH}"
 export PATH="${HOME}/go/bin:${PATH}"
 export PATH=/home/rnakai/.tiup/bin:$PATH
 export PATH="$PATH:/home/rnakai/.local/bin"
+export PATH="$PATH:/home/rnakai/.asdf/installs/nodejs/22.21.0/bin"
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8

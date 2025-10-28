@@ -20,4 +20,5 @@ function display_bright() {
   fi
 }
 
-source ./dpx
+source ${MODULES_PATH}/dpx
+
